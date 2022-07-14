@@ -1,21 +1,24 @@
 import '../css/Item.css'
-const Item = ({title,description,thumbnail,price}) => {
+const Item = (products) => {
+  const datos = products.products  
   return (
     <>
-    <div class="card w-96 bg-base-100 shadow-xl separacion">
-        <figure class="px-10 pt-10">
-            <img src={thumbnail} alt="Shoes" class="rounded-xl" />
+      {datos.map((e)=>(
+        <div className="card w-96 bg-base-100 shadow-xl separacion" key={e.id}>
+        <figure className="px-10 pt-10">
+            <img src={e.pictureUrl} alt="Shoes" className="rounded-xl" />
         </figure>
-        <div class="card-body items-center text-center">
-            <h2 class="card-title">{title}</h2>
-            <p>{description}</p>
-            <h1 className='precio'>{price}$</h1>
-            <div class="card-actions">
+        <div className="card-body items-center text-center">
+            <h2 className="card-title">{e.title}</h2>
+            <p>{e.description}</p>
+            <h1 className='precio'>{e.price}$</h1>
+            <div className="card-actions">
             
-            <button class="btn btn-primary">Ver detalle</button>
+            <button className="btn btn-primary">Ver detalle</button>
             </div>
         </div>
     </div>
+      ))}
     </>
   )
 }
